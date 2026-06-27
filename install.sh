@@ -47,12 +47,15 @@ cp -f $PROJECT_DIR/gcode_shell_command.py $KLIPPER_DIR/klippy/extras/ && echo "g
 
 # Use rsync to copy, overwriting existing files and create the folder if it does not exist
 rsync $PROJECT_DIR/plr.sh $USER_HOME/printer_data/plr/ && echo "plr.sh copied successfully." || echo "Error copying plr.sh."
+rsync $PROJECT_DIR/plr_generate.py $USER_HOME/printer_data/plr/ && echo "plr_generate.py copied successfully." || echo "Error copying plr_generate.py."
 rsync $PROJECT_DIR/clear_plr.sh $USER_HOME/printer_data/plr/ && echo "clear_plr.sh copied successfully." || echo "Error copying clear_plr.sh."
 # Auto replace path
 sed -i -E "s|\{USER_HOME\}|$USER_HOME|i" $USER_HOME/printer_data/plr/plr.sh
+sed -i -E "s|\{PLR_DIR\}|$USER_HOME/printer_data/plr|i" $USER_HOME/printer_data/plr/plr.sh
 sed -i -E "s|\{USER_HOME\}|$USER_HOME|i" $USER_HOME/printer_data/plr/clear_plr.sh
 # Make plr.sh & clear_plr.sh executable
 chmod +x $USER_HOME/printer_data/plr/plr.sh && echo "plr.sh made executable." || echo "Error making plr.sh executable."
+chmod +x $USER_HOME/printer_data/plr/plr_generate.py && echo "plr_generate.py made executable." || echo "Error making plr_generate.py executable."
 chmod +x $USER_HOME/printer_data/plr/clear_plr.sh && echo "clear_plr.sh made executable." || echo "Error making clear_plr.sh executable."
 
 # Check if printer.cfg exists, create it if it doesn't
