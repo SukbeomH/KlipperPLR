@@ -141,7 +141,7 @@ cat > $USER_HOME/printer_data/config/update_plr.cfg << EOF
 [update_manager KlipperPLR]
 type: git_repo
 path: ~/KlipperPLR
-origin: https://github.com/bigtreetech/KlipperPLR.git
+origin: https://github.com/SukbeomH/KlipperPLR.git
 primary_branch: main
 install_script: install.sh
 is_system_service: False
